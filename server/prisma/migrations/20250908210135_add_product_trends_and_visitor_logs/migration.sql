@@ -1,0 +1,23 @@
+-- CreateTable
+CREATE TABLE `ProductTrends` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `productId` VARCHAR(191) NOT NULL,
+    `views` INTEGER NOT NULL DEFAULT 0,
+    `date` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `VisitorLogs` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `ipAddress` VARCHAR(191) NOT NULL,
+    `userAgent` VARCHAR(191) NOT NULL,
+    `page` VARCHAR(191) NOT NULL,
+    `date` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- AddForeignKey
+ALTER TABLE `ProductTrends` ADD CONSTRAINT `ProductTrends_productId_fkey` FOREIGN KEY (`productId`) REFERENCES `Product`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
